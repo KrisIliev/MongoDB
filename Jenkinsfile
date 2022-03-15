@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('GitHub') {
       steps {
-        git(url: 'git@github.com:KrisIliev/MongoDB.git', branch: 'main')
+        git(url: 'git@github.com:KrisIliev/MongoDB.git', branch: 'main', credentialsId: 'Krisiliev')
       }
     }
 
