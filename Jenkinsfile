@@ -19,7 +19,7 @@ mv ./kubectl ~/.local/bin/kubectl
 
     stage('K8 Test') {
       steps {
-        sh 'kubectl get all'
+        sh '/var/jenkins_home/.local/bin/kubectl get all'
       }
     }
 
