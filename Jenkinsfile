@@ -1,24 +1,17 @@
 pipeline {
   agent {
     kubernetes {
-      	cloud 'kubernetes'
+      	cloud 'Kyma'
       	defaultContainer 'jnlp'
       }
-    }
-  stages {
-    stage('GitHub') {
-      steps {
-        git(url: 'git@github.com:KrisIliev/MongoDB.git', branch: 'main', credentialsId: 'Krisiliev')
-      
     }
   stages {
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "hellodocker.yml", kubeconfigId: "MINIKUBECONFIG")
+          kubernetesDeploy(configs: "secret.yml", kubeconfigId: "09a82357-0bf8-47ad-8d8e-b455b30b3ce3")
         }
       }
     }
-  
   }
 }
