@@ -14,7 +14,7 @@ pipeline {
 mkdir -p ~/.local/bin/kubectl
 mv ./kubectl ~/.local/bin/kubectl
 '''
-        sh 'kubectl'
+        sh '~/.local/bin/kubectl'
         sh '''touch kubeconfig.yaml && echo "apiVersion: v1
 kind: Config
 current-context: shoot--promart--rdimitrov
