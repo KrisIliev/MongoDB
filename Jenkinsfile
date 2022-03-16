@@ -14,6 +14,26 @@ pipeline {
 mkdir -p ~/.local/bin/kubectl
 mv ./kubectl ~/.local/bin/kubectl
 '''
+        sh 'kubectl'
+        sh '''touch kubeconfig.yaml && echo "apiVersion: v1
+kind: Config
+current-context: shoot--promart--rdimitrov
+contexts:
+  - name: shoot--promart--rdimitrov
+    context:
+      cluster: shoot--promart--rdimitrov
+      user: shoot--promart--rdimitrov-token
+clusters:
+  - name: shoot--promart--rdimitrov
+    cluster:
+      server: \'https://api.rdimitrov.promart.shoot.canary.k8s-hana.ondemand.com\'
+      certificate-authority-data: >-
+        LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM5ekNDQWQrZ0F3SUJBZ0lSQUtHdG1lTGR1bFhUeEdyUkRUL3pZcVV3RFFZSktvWklodmNOQVFFTEJRQXcKRlRFVE1CRUdBMVVFQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TVRFeU1ERXhNakV6TVRWYUZ3MHpNVEV5TURFeApNakV6TVRWYU1CVXhFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBCkE0SUJEd0F3Z2dFS0FvSUJBUURhQVZQZ2pwcjUzcGNnOCs3bmVONmhKQjEwZVJVQmxoMFBCS1lQajVEaExxc2MKV1gzODhjWFhSbExFUkZpWHEvYUJIbGs3czh2NGIrYmxTcndFTHpReE1ZQ2YvSzE3UnpsL1ZwVkNuSHpDYTQ1ZgpmSzREK0xKa3dRaUZHUTdCcElKTmNuOENlUUxvMFozTmhER1RHVlpRVzQ2OVRFNkxtd2xIMjcxanlwNU5YRFNCCm5LUVNFRGdrZDlISXh6TWRZUmdMVDg3TXE3ZmNIRXkvMGlKd1BOOUM5RUZ3eElsdzFiUllTVExuT2pGVnpGWmwKY2FoME5CRHJBcldaMmpEOVkwK3BrcFNsa0dtZHlQNUwyT2I4SUFlMnBxMHU5TFVEMnAxTjdVUUQzaUlMMFlUdwpuTDlJRDlJOHBtTzFuTTQ2ekJTd3FHQzdBK0M2YkNpNEJQMXNpZEFEQWdNQkFBR2pRakJBTUE0R0ExVWREd0VCCi93UUVBd0lCcGpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJUNWxGaUJnOUJGa1NYdnIzd0gKeXNOcTFZY2JaakFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBU1VVMWtPOE9WVHdXaGhuRGdsNVA5Rk45blNvUwpuQ1J2LzNKTzRqSDZuVW03SnRxUVkya3ZXaElJS2FFUUVFcUZweTA0NFRQMC9VSWdsdmErOWFiR1QxVEpiZTdkCmlpV1hjNHhVcmNtV2hxYnZ1eEhrSU1PZWFjVzVOa0FyV1pzK0pacmk0NndJcTJkbWdSZEFJODRwREhrZEJLanEKeFJKeXY4eGJPTVJkZm1PYTZiZVViaVY4Nk1ub3FxRkJFMm10cFIrNmdNeFVWVnc0bU9ZTm5pRzRuRHJOdC8vNAplK3ZvYkRiSDI3eE5sWlN4N2FYdGRHZmgrbVZLU2t4QXNMcGlQZzVyb3htQlQ0QXlFM1FtV1NZMjdPZ2VxSkx5Cjd0Y0k5OWNFWnY5N3o1dkhoQnJVdVZKcUk4TEFvVHgwajEvZGNzOU52OEEvK0xMVlNDUVRsS05MVEE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+users:
+  - name: shoot--promart--rdimitrov-token
+    user:
+      token: >-
+        1vzNljlAIngZb8QF613Nlvejt3BWCcRS0aL1tyyeAM1tzVKTVw8UIKnE5VZbvpOi9pzKYeTJ7A1sj8V61zLfK67hnWeRtidvX1evW7oLoFVRRkJfoy3SqiGUq0y1Cp2V" >> kubeconfig.yaml && export KUBECONFIG=$KUBECONFIG:kubeconfig.yaml'''
       }
     }
 
