@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    kubernetes {
+      	cloud 'Kyma'
+      	defaultContainer 'jnlp'
+    }
+  }
   stages {
     stage('GitHub') {
       steps {
