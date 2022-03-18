@@ -1,6 +1,7 @@
 pipeline {
-  agent any { 
+  agent { 
     kubernetes {
+      label 'Kyma-Test-Pipeline_9-sq3l6'
       cloud 'Kyma'
       defaultContainer 'jnlp'
     }
