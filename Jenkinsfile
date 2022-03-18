@@ -1,6 +1,5 @@
 pipeline {
-  agent { 
-    any
+  agent any { 
     kubernetes {
       cloud 'Kyma'
       defaultContainer 'jnlp'
