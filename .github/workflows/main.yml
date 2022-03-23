@@ -41,4 +41,8 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.ITESTS_KYMA_CONFIG }}
+          
+      - name: Run a multi-line script2
+        run: kubectl get nodes
+        
 
