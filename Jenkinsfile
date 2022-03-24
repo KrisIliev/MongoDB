@@ -1,5 +1,5 @@
 pipeline {
-  agent {
+  agent { 
     kubernetes {
       	cloud 'kubernetes'
       	defaultContainer 'jnlp'
